@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TemoignageController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,16 @@ Route::get('/temoignages', [TemoignageController::class, 'index'])->name('temoig
 Route::get('/temoignages/create', [TemoignageController::class, 'create'])->name('temoignages.create');
 Route::post('/temoignages', [TemoignageController::class, 'store'])->name('temoignages.store');
 Route::delete('/temoignages/{id}', [TemoignageController::class, 'destroy'])->name('temoignages.destroy');
+
+
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
+Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';

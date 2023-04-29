@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Service;
+use App\Models\Professional;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +13,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $services = [
+            'Educator',
+            'Doctor',
+            'Driver',
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($services as $service) {
+            $serviceModel = Service::create([
+                'name' => $service,
+            ]);
+
+            $serviceModel->professionals()->createMany([
+                [
+                    'name' => 'John Doe',
+                    'age' => 30,
+                    'available_time' => '10:00-12:00',
+                ],
+                [
+                    'name' => 'Jane Smith',
+                    'age' => 35,
+                    'available_time' => '14:00-16:00',
+                ],
+                [
+                    'name' => 'Bob Johnson',
+                    'age' => 40,
+                    'available_time' => '18:00-20:00',
+                ],
+            ]);
+        }
     }
 }
