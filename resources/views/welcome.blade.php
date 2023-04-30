@@ -10,13 +10,95 @@
 </head>
 <body>
     @include('layouts.header')
+  <div class="hero-image">
+    <div class="titles">
 
-  <div class="container">
-    <h1 class="text-center mt-5 mb-3">Bienvenue sur notre site d'aide et de donations</h1>
-    <p class="text-center">Nous sommes une association à but non lucratif qui vise à aider les personnes dans le besoin en leur offrant des services, des fournitures, des vêtements et de la nourriture. Nous offrons également des programmes de volontariat pour les personnes qui souhaitent aider les autres.</p>
+  </div>
+  <div class="sidebar">
+    <ul>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </div>
+<style>
+.hero-image {
+  background-image: url('/pics/back2.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 520px; 
+  position: relative;
+}
+
+.titles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.titles h1 {
+  font-size: 5em;
+  margin: 0;
+  padding: 0;
+}
+
+.titles h2 {
+  font-size: 3em;
+  margin: 0;
+  padding: 0;
+}
+
+.titles h3 {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 80px;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+}
+
+.sidebar a:hover {
+  background-color: white;
+  color: black;
+}
+
+
+</style>
+
+  <!-- <div class="container"> -->
+    <!-- <h1 class="text-center mt-5 mb-3">Bienvenue sur notre site d'aide et de donations</h1>
+    <p class="text-center">Nous sommes une association à but non lucratif qui vise à aider les personnes dans le besoin en leur offrant des services, des fournitures, des vêtements et de la nourriture. Nous offrons également des programmes de volontariat pour les personnes qui souhaitent aider les autres.</p> -->
 
     <!-- Section des offres d'aide -->
-    <div class="row mt-5">
+    <!-- <div class="row mt-5">
       <div class="col-md-6">
         <h2 class="mb-3">Offres d'aide</h2>
         <p>Voici les différentes offres d'aide que nous proposons:</p>
@@ -26,10 +108,10 @@
           <li>Vêtements</li>
           <li>Fournitures scolaires</li>
         </ul>
-      </div>
+      </div> -->
       
       <!-- Section des demandes d'aide -->
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <h2 class="mb-3">Demandes d'aide</h2>
         <p>Si vous êtes une personne dans le besoin, nous pouvons vous offrir les services suivants:</p>
         <ul>
@@ -37,31 +119,31 @@
           <li>Programmes de volontariat professionnels (médecine, éducation, etc.)</li>
         </ul>
       </div>
-    </div>
+    </div> -->
     
     <!-- Section des cas d'urgence -->
-    <div class="row mt-5">
+    <!-- <div class="row mt-5">
       <div class="col-md-12">
         <h2 class="mb-3">Cas d'urgence</h2>
         <p>Nous avons également une section de dons en ligne pour les cas spéciaux et urgents. Si vous souhaitez faire un don pour aider les personnes dans le besoin, veuillez cliquer sur le bouton ci-dessous.</p>
         <a href="#" class="btn btn-primary">Faire un don</a>
       </div>
-    </div>
+    </div> -->
     
     <!-- Section des témoignages et réussites -->
-    <div class="row mt-5">
+    <!-- <div class="row mt-5">
       <div class="col-md-12">
         <h2 class="mb-3">Témoignages et réussites</h2>
         <p>Nous sommes fiers de partager les histoires de réussite de nos bénéficiaires et de nos volontaires. Consultez notre page de témoignages pour découvrir comment notre association a changé la vie de nombreuses personnes dans le besoin.</p>
         <a href="#" class="btn btn-secondary">Témoignages</a>
       </div>
-    </div>
+    </div> -->
     
     <!-- Section "À propos de nous" -->
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
         <h2>A propos de nous</h2>
         <p>Nous sommes une association à but non lucratif qui vise à aider les personnes dans le besoin. Notre mission est de rassembler des personnes qui souhaitent offrir leur temps, leur argent ou leurs compétences pour soutenir les plus démunis.</p>
         <p>Nous travaillons avec des bénévoles passionnés qui ont pour objectif de faire une différence dans la vie des gens. Nous croyons en l'importance de la solidarité et nous sommes convaincus que chacun peut contribuer à sa manière à améliorer la vie de ceux qui nous entourent.</p>
         <a href="#" class="btn btn-primary">En savoir plus</a>
-      </div>
+      </div> -->
     
