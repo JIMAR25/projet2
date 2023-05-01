@@ -14,7 +14,7 @@
               <a class="nav-link" href="/services">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/volontariat">Volontariat</a>
+              <a class="nav-link" href="{{route('donations.index')}}">Donations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/cas-d-urgences">Cas d'urgences</a>
