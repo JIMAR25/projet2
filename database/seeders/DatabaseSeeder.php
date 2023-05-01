@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $services = [
-            'Educator',
-            'Doctor',
-            'Driver',
+            'Educateur',
+            'Médecin',
+            'Chauffeur',
         ];
 
         foreach ($services as $service) {
