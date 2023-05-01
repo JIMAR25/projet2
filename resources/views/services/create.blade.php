@@ -26,7 +26,7 @@
         </div>
         <div class="mb-3">
             <label for="provider-time" class="form-label">Disponibilité du Prestataire</label>
-            <input type="text" class="form-control" id="provider-time" name="provider_time" required>
+            <input type="datetime-local" class="form-control" id="provider-time" name="provider_time" required>
         </div>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
     </form>
