@@ -10,7 +10,7 @@
             <select class="form-select" name="service" id="service-filter">
                 <option value="">Tous les services</option>
                 @foreach($services as $service)
-                <option value="{{ $service->id }}" {{ request('service') == $service->id ? 'selected' : '' }}>{{ $service->name }}</option>
+                <option value="{{ $service->id }}" {{ request('service') == $service->id ? 'selected' : '' }}>{{ $service->nom }}</option>
                 @endforeach
             </select>
             <button type="submit" class="btn btn-primary">Filtrer</button>
@@ -28,13 +28,17 @@
         </thead> --}}
         <tbody>
             @foreach($services as $service)
+           
             @if(request('service') == $service->id || !request('service'))
             <tr>
                 {{-- <td>{{ $service->name }}</td> --}}
                 <td>
                     <ul>
                         @foreach($service->professionals as $provider)
-                        <h4> je suis {{$service->name }} - {{ $provider->name }} - {{ $provider->age }} ans - disponible à {{ $provider->available_time }}</h4>
+                        @if($provider->image)
+                            <img class="card-img-top" src="{{ asset('images/' . $provider->image) }}" alt="{{ $provider->nom }}">
+                        @endif
+                        <h4> je suis {{$service->nom }} - {{ $provider->nom }} - {{ $provider->age }} ans - disponible à {{ $provider->available_time }} - mon email {{$provider->email}} - Telephone: {{$provider->telephone}}</h4>
                         @endforeach
                     </ul>
                 </td>
