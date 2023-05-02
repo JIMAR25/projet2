@@ -7,6 +7,9 @@
   <title>Bienvenue sur notre site d'aide et de donations</title>
   <!-- Link vers les styles CSS -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-zTfHpF9Kv3HQyjmdFkSgx4yKkEJwfxpYYDYxB+4jzIa4KQZDzlwLJxKqdjNQr5Je" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-DJlAdpb1OfgJxCphE6bW0aMca0ojHYSJAzBwY+NyTt8yDJoSUg/zp+1vyyuX+q3q" crossorigin="anonymous">
 </head>
 <body>
   <div class="main">
@@ -23,6 +26,94 @@
         </ul>
       </div>
   </div>
+  <section class="home-section">
+  <div class="container">
+    <div class="row1">
+      <div class="col-md-6">
+        <h1 class="section-title">L'organisation marocaine ShareHope <br> d'aide et doantion</h1>
+        <p>Notre organisation de donation et d'aide marocaine est déterminée à faire une différence <br> dans la vie de ceux qui ont besoin de soutien. Nous nous engageons à fournir <br> une aide efficace et à impact durable pour les communautés locales. <br> Rejoignez-nous dans notre mission de changer des vies aujourd'hui.</p>
+        <a href="#" class="read-more">Lire plus</a>
+      </div>
+      <div class="tous-nb">
+        <div class="stats-box">
+          <div class="stats-number">10,000</div>
+          <div class="stats-title">Titre du nombre</div>
+        </div>
+        <div class="stats-box">
+          <div class="stats-number">10,000</div>
+          <div class="stats-title">Titre du nombre</div>
+        </div>
+        <div class="stats-box">
+          <div class="stats-number">10,000</div>
+          <div class="stats-title">Titre du nombre</div>
+        </div>
+        <div class="stats-box">
+          <div class="stats-number">10,000</div>
+          <div class="stats-title">Titre du nombre</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="report-box">
+            <span>
+            <h3 class="report-title"><i class="far fa-file-pdf"></i> International Report 2021</h3>
+              <a href="#" class="btn-read-report red">Lire le rapport</a>
+            </span>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="contain">
+  <div class="image-container">
+    <img src="./pics/back1.jpg" alt="your-image">
+    <div class="card-container">
+      <h5>Maroc</h5>
+      <h2>Dans de nombreuses régions du Maroc, il existe des endroits où les populations sont dans le besoin et nécessitent une aide extérieure pour subvenir à leurs besoins les plus essentiels.</h2>
+      <h6>13/06/2018</h6>
+    </div>
+  </div>
+</div>
+<section class="card-section">
+  <div class="card">
+    <img src="./pics/back5.jpg" alt="image1">
+    <h3>Titre 1</h3>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis eius quia ad corrupti vitae vel architecto distinctio, quam suscipit voluptatibus molestias. Aut sint veniam dignissimos itaque voluptates voluptas eaque delectus.</p>
+    <h5>date</h5>
+  </div>
+  <div class="card">
+    <img src="./pics/back6.jpg" alt="image2">
+    <h3>Titre 2</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta vero accusantium earum distinctio cupiditate qui officiis blanditiis, quidem, voluptate nulla corrupti molestiae asperiores repellat natus! Officia hic eligendi iste ipsa?</p>
+    <h5>date</h5>
+  </div>
+  <div class="card">
+    <img src="./pics/back7.jpg" alt="image3">
+    <h3>Titre 3</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus commodi asperiores quasi, quo nulla blanditiis! Aperiam esse obcaecati aspernatur voluptate nulla sint sit et quam, deleniti veniam tempore repudiandae porro!</p>
+    <h5>date</h5>
+  </div>
+</section>
+
+<section class="custom-section">
+  <div class="contai">
+    <h2 class="custom-title">Titre de la section</h2>
+    <p class="custom-paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo turpis quis orci tristique, ac suscipit libero sagittis. In vel bibendum nisl. Praesent id tincidunt lectus. Etiam sollicitudin libero nec neque imperdiet malesuada.</p>
+    <button class="custom-button">Mon bouton</button>
+  </div>
+</section>
+
+<div class="map">
+    <div class="newsletter_main">
+        <button class="google"><i class="fa fa-globe"></i>{{__('Voir sur Google Maps')}}</button>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13299267.381865657!2d-10.226282878622082!3d31.25078278642567!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd14938c80b3655f%3A0x98d02c63177a5f!2sMaroc!5e0!3m2!1sfr!2sma!4v1678205654086!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <p>{{__('Maroc')}}</p>
+</div>
+
+
+
   <footer>
         <section class="footer">
             <div class="footer-top">
@@ -86,11 +177,15 @@
             <div class="credit">© 2023<span> ShareHope </span> | {{__('Tous les droits sont réservés!')}} </div>
         </section>
         </footer>
+  <script src="path/to/font-awesome/js/all.js"></script>
 </body>
 
 
         
 <style>
+  section {
+  box-shadow: none;
+}
 .main {
   position: relative;
   width: 100%;
@@ -160,13 +255,13 @@
 }
 
 .sidebar a:hover {
-  background-color: white;
   color: black;
 }
 footer {
   background-color:#696969;
   padding: 50px;
   color:white;
+  
 }
 
 .box-container {
@@ -259,59 +354,254 @@ margin-left:50px;
   font-size:4.5rem;
   font-weight:bold;
 }
+.home-section {
+  background-color: #f7f7f7;
+  padding: 80px 0;
+
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align:center;
+  margin-top:100px;
+}
+.row1 p{
+  text-align:center;
+  font-size:20px;
+  color:gray;
+  text-indent: -1em; 
+}
+.stats-box {
+
+  text-align: center;
+  padding: 40px;
+
+
+}
+
+.stats-number {
+  font-size: 60px;
+  font-weight: bold;
+  color: gray;
+}
+
+.stats-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.report-box {
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 20px;
+  margin-top:150px;
+  border-radius: 5px;
+  border:1px solid red;
+  margin-left:200px;
+  margin-right:200px;
+}
+.report-box span{
+  display:flex;
+  gap:600px;
+}
+
+
+.report-box .report-title {
+  margin: 0;
+}
+
+.report-box .btn-read-report {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.report-box .btn-read-report:hover {
+  background-color: darkred;
+}
+
+
+/* .read-more, .btn-read-report {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff5e14;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 30px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+} */
+.read-more{
+  display: inline-block;
+  padding: 10px 20px;
+  border:1px solid red;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration:none;
+  text-transform: uppercase;
+  margin-left:650px;
+
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+.btn-read-more:hover, .btn-read-report:hover {
+  background-color: #333;
+
+
+  color: #fff;
+}
+.tous-nb{
+  display:flex;
+  gap:50px;
+  margin-left:150px;
+}
+
+.contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top:-100px;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  display: block;
+  width: 900px;
+  height: auto;
+}
+
+.card-container {
+  position: absolute;
+  top: -70px;
+  left: 600px;
+  width:500px;
+  height:250px;
+  background-color: rgb(40, 39, 39);
+  padding: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  text-align: center;
+}
+.card-container {
+  color:red;
+  font-size:16px;
+}
+.card-container h2{
+  color:white;
+}
+.card-container h6{
+  color:red;
+  font-size:16px;
+  margin-right:350px;
+}
+.card-container h5{
+  color:red;
+  font-size:16px;
+}
+.card-section {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom:50px;
+}
+
+.card {
+  width: 30%;
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card img {
+  width:400px;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.custom-section {
+  background-color: #f2f2f2;
+  padding: 50px 0;
+}
+
+.contai {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.custom-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.custom-paragraph {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.custom-button {
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #ff7c81;
+}
+
+.map iframe {
+  filter: grayscale(100%) invert(100%) sepia(0%) saturate(1000%) hue-rotate(355deg);
+  width:950px;
+}
+.map {
+  text-align: center;
+
+}
+iframe {
+  display: block;
+  margin: 0 auto;
+}
+.google {
+  display: inline-block;
+  margin-top: 20px;
+
+  padding: 10px 20px;
+  font-size: 18px;
+  color: gray;
+  background-color:transparent;
+  border:1px solid red;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.google:focus {
+  outline: none;
+}
+.fa {
+  margin-right: 10px;
+}
+
 </style>
 
-  <!-- <div class="container"> -->
-    <!-- <h1 class="text-center mt-5 mb-3">Bienvenue sur notre site d'aide et de donations</h1>
-    <p class="text-center">Nous sommes une association à but non lucratif qui vise à aider les personnes dans le besoin en leur offrant des services, des fournitures, des vêtements et de la nourriture. Nous offrons également des programmes de volontariat pour les personnes qui souhaitent aider les autres.</p> -->
 
-    <!-- Section des offres d'aide -->
-    <!-- <div class="row mt-5">
-      <div class="col-md-6">
-        <h2 class="mb-3">Offres d'aide</h2>
-        <p>Voici les différentes offres d'aide que nous proposons:</p>
-        <ul>
-          <li>Services de nourriture et d'alimentation</li>
-          <li>Fournitures</li>
-          <li>Vêtements</li>
-          <li>Fournitures scolaires</li>
-        </ul>
-      </div> -->
-      
-      <!-- Section des demandes d'aide -->
-      <!-- <div class="col-md-6">
-        <h2 class="mb-3">Demandes d'aide</h2>
-        <p>Si vous êtes une personne dans le besoin, nous pouvons vous offrir les services suivants:</p>
-        <ul>
-          <li>Programmes de volontariat généraux</li>
-          <li>Programmes de volontariat professionnels (médecine, éducation, etc.)</li>
-        </ul>
-      </div>
-    </div> -->
-    
-    <!-- Section des cas d'urgence -->
-    <!-- <div class="row mt-5">
-      <div class="col-md-12">
-        <h2 class="mb-3">Cas d'urgence</h2>
-        <p>Nous avons également une section de dons en ligne pour les cas spéciaux et urgents. Si vous souhaitez faire un don pour aider les personnes dans le besoin, veuillez cliquer sur le bouton ci-dessous.</p>
-        <a href="#" class="btn btn-primary">Faire un don</a>
-      </div>
-    </div> -->
-    
-    <!-- Section des témoignages et réussites -->
-    <!-- <div class="row mt-5">
-      <div class="col-md-12">
-        <h2 class="mb-3">Témoignages et réussites</h2>
-        <p>Nous sommes fiers de partager les histoires de réussite de nos bénéficiaires et de nos volontaires. Consultez notre page de témoignages pour découvrir comment notre association a changé la vie de nombreuses personnes dans le besoin.</p>
-        <a href="#" class="btn btn-secondary">Témoignages</a>
-      </div>
-    </div> -->
-    
-    <!-- Section "À propos de nous" -->
-    <!-- <div class="col-md-6">
-        <h2>A propos de nous</h2>
-        <p>Nous sommes une association à but non lucratif qui vise à aider les personnes dans le besoin. Notre mission est de rassembler des personnes qui souhaitent offrir leur temps, leur argent ou leurs compétences pour soutenir les plus démunis.</p>
-        <p>Nous travaillons avec des bénévoles passionnés qui ont pour objectif de faire une différence dans la vie des gens. Nous croyons en l'importance de la solidarité et nous sommes convaincus que chacun peut contribuer à sa manière à améliorer la vie de ceux qui nous entourent.</p>
-        <a href="#" class="btn btn-primary">En savoir plus</a>
-      </div> -->
     
