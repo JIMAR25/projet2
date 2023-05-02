@@ -48,10 +48,14 @@ Route::delete('/temoignages/{id}', [TemoignageController::class, 'destroy'])->na
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
 Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
-Route::post('/services/{service}/donors', [App\Http\Controllers\ServiceController::class, 'addDonor'])->name('services.addDonor');
+Route::post('/services/{service}/donors', [ServiceController::class, 'addDonor'])->name('services.addDonor');
 
 
 Route::get('/donations', [DonationController::class, 'index'])->name('donations.index');
+Route::get('/donations/argents/index', [ArgentController::class, 'index'])->name('donations.argents.index');
+Route::get('/argents', [DonationController::class, 'create'])->name('argents.create');
+Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+
 Route::get('/donations/argents/create', function () {
     return view('donations.argents.create');
 })->name('argent');

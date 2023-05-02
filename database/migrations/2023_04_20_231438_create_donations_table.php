@@ -15,11 +15,14 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->decimal('amount', 10, 2);
-            $table->string('donation_type');
+            $table->string('nom');
+            $table->string('email');
+            $table->decimal('montant', 8, 2);
+            $table->string('transaction_id')->nullable();
+            $table->string('adresse');
+            $table->string('code_postal')->nullable();
+            $table->string('ville');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -33,4 +36,3 @@ class CreateDonationsTable extends Migration
         Schema::dropIfExists('donations');
     }
 }
-
