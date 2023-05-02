@@ -6,36 +6,67 @@
 <div class="panel panel-default">
 <div class="panel-heading">{{ __('Faire un don d\'argent') }}</div>
             <div class="panel-body">
-                <form method="GET" action="{{ route('paiement.create') }}">
+                <form method="POST" action="{{ route('donations.store') }}">
                     @csrf
 
                     <div class="form-group row">
-                        <label for="amount" class="col-md-4 col-form-label text-md-right">{{ __('Montant du don') }}</label>
-
+                        <label for="montant" class="col-md-4 col-form-label text-md-right">{{ __('Montant du don') }}</label>
+    
                         <div class="col-md-6">
-                            <input id="amount" type="text" class="form-control" name="amount" required autofocus>
+                            <input id="montant" type="text" class="form-control" name="montant" required autofocus>
                         </div>
                     </div>
-
+    
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom complet') }}</label>
-
+                        <label for="nom" class="col-md-4 col-form-label text-md-right">{{ __('Nom complet') }}</label>
+    
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name" required>
+                            <input id="nom" type="text" class="form-control" name="nom" required>
                         </div>
                     </div>
-
+    
                     <div class="form-group row">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse email') }}</label>
-
+    
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control" name="email" required>
                         </div>
                     </div>
-
+    
+                    <div class="form-group row">
+                        <label for="adresse" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="adresse" type="text" class="form-control" name="adresse" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label for="code_postal" class="col-md-4 col-form-label text-md-right">{{ __('Code postal') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="code_postal" type="text" class="form-control" name="code_postal">
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label for="ville" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="ville" type="text" class="form-control" name="ville" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="date_de_naissance" class="col-md-4 col-form-label text-md-right">{{ __('Date de naissance') }}</label>
+    
+                        <div class="col-md-6">
+                            <input id="date_de_naissance" type="date" class="form-control" name="date_de_naissance" required>
+                        </div>
+                    </div>
+    
                     <div class="form-group row">
                         <label for="message" class="col-md-4 col-form-label text-md-right">{{ __('Message (optionnel)') }}</label>
-
+    
                         <div class="col-md-6">
                             <textarea id="message" class="form-control" name="message"></textarea>
                         </div>

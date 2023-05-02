@@ -13,6 +13,9 @@ class Donation extends Model
         'nom',
         'email',
         'montant',
-        'transaction_id'
+        'transaction_id',
+        'adresse',
+        'code_postal',
+        'ville',
     ];
 }
