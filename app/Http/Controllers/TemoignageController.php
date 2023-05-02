@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Temoignage;
-
 
 use Illuminate\Http\Request;
+use App\Models\Temoignage;
 
 class TemoignageController extends Controller
 {
     public function index()
     {
         $temoignages = Temoignage::all();
-
         return view('temoignages.index', compact('temoignages'));
     }
 
@@ -22,30 +20,61 @@ class TemoignageController extends Controller
 
     public function store(Request $request)
     {
-        // Valider les données du formulaire
-        $request->validate([
+        $validatedData = $request->validate([
             'nom' => 'required',
-            'temoignage' => 'required',
+            'message' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Créer une nouvelle instance du modèle Testimony avec les données du formulaire
         $temoignage = new Temoignage();
-        $temoignage->nom = $request->input('nom');
-        $temoignage->temoignage = $request->input('temoignage');
 
-        // Enregistrer le nouveau témoignage dans la base de données
+        $temoignage->nom = $validatedData['nom'];
+        $temoignage->message = $validatedData['message'];
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $filename);
+            $temoignage->image = $filename;
+        }
+
         $temoignage->save();
 
-        // Rediriger l'utilisateur vers la page des témoignages avec un message de succès
-        return redirect()->route('temoignages.index')->with('success', 'Votre témoignage a été publié avec succès.');
+        return redirect()->route('temoignages.index')->with('success', 'Témoignage ajouté avec succès!');
     }
+
+    // public function edit(Temoignage $temoignage)
+    // {
+    //     return view('temoignages.edit', compact('temoignage'));
+    // }
+
+    // public function update(Request $request, Temoignage $temoignage)
+    // {
+    //     $validatedData = $request->validate([
+    //         'nom' => 'required',
+    //         'message' => 'required',
+    //         'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ]);
+
+    //     $temoignage->nom = $validatedData['nom'];
+    //     $temoignage->message = $validatedData['message'];
+
+    //     if ($request->hasFile('image')) {
+    //         $image = $request->file('image');
+    //         $filename = time() . '.' . $image->getClientOriginalExtension();
+    //         $image->move(public_path('images'), $filename);
+    //         $temoignage->image = $filename;
+    //     }
+
+    //     $temoignage->save();
+
+    //     return redirect()->route('temoignages.index')->with('success', 'Témoignage modifié avec succès!');
+    // }
 
     public function destroy(Temoignage $temoignage)
     {
-        // Supprimer le témoignage de la base de données
         $temoignage->delete();
 
-        // Rediriger l'utilisateur vers la page des témoignages avec un message de succès
-        return redirect()->route('temoignages.index')->with('success', 'Le témoignage a été supprimé avec succès.');
+        return redirect()->route('temoignages.index')->with('success', 'Témoignage supprimé avec succès!');
     }
 }

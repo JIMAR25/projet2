@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Service;
+use App\Models\Temoignage;
 use App\Models\Professional;
 
 class DatabaseSeeder extends Seeder
@@ -42,5 +43,10 @@ class DatabaseSeeder extends Seeder
                 ],
             ]);
         }
+        Temoignage::create([
+            'nom' => 'John Doe',
+            'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla semper enim, vel malesuada lectus pulvinar vitae.',
+            'image' => 'john_doe.jpg'
+        ]);
     }
 }
