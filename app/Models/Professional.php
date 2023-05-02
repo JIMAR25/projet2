@@ -10,9 +10,12 @@ class Professional extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'nom',
         'age',
         'available_time',
+        'image',
+        'telephone',
+        'email'
         // add any other relevant fields here
     ];
 

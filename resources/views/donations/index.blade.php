@@ -11,7 +11,7 @@
     </p>
     <div class="col-md-4">
         <h2>{{__('Argent')}}</h2>
-        <a href="/donations/argents/create">
+        <a href="/donations/argents/index">
             <img src="/images/argent.jpg" alt="Image 3" class="img-thumbnail">
         </a>
       </div>

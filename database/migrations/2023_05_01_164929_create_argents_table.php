@@ -17,7 +17,11 @@ class CreateArgentsTable extends Migration
             $table->id();
             $table->string('nom');
             $table->string('email');
-            $table->float('montant');
+            $table->decimal('montant', 8, 2);
+            $table->string('transaction_id');
+            $table->string('adresse');
+            $table->string('code_postal')->nullable();
+            $table->string('ville');
             $table->timestamps();
         });
     }

@@ -1,28 +1,24 @@
-<div class="container">
-    <h1>Liste des témoignages</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Témoignage</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <h1>Témoignages</h1>
+        <a href="{{ route('temoignages.create') }}" class="btn btn-primary">Ajouter temoignage</a>
+        <div class="row">
             @foreach($temoignages as $temoignage)
-                <tr>
-                    <td>{{ $temoignage->nom }}</td>
-                    <td>{{ $temoignage->message }}</td>
-                    <td>
-                        <form action="{{ route('temoignages.delete', $temoignage->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        @if($temoignage->image)
+                        <img class="card-img-top" src="{{ asset('images/' . $temoignage->image) }}" alt="{{ $temoignage->nom }}">
+                        @endif
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $temoignage->nom }}</h5>
+                            <p class="card-text">{{ $temoignage->message }}</p>
+                        </div>
+                    </div>
+                </div>
             @endforeach
-        </tbody>
-    </table>
-    <a href="{{ route('temoignages.create') }}" class="btn btn-primary">Ajouter un témoignage</a>
-  </div>
+        </div>
+    </div>
+@endsection

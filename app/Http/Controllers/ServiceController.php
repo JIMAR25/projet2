@@ -23,28 +23,40 @@ class ServiceController extends Controller
     public function store(Request $request)
 {
     $validatedData = $request->validate([
-        'provider_name' => 'required|max:255',
+        'provider_nom' => 'required|max:255',
         'provider_age' => 'required|integer',
         'provider_time' => 'required|max:255',
+        'provider_telephone' => 'required|digits:10',
+        'provider_email' => 'required|email',
+        'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
-    $serviceName = $request->input('name');
+    $serviceName = $request->input('nom');
     $newServiceName = $request->input('new_service');
 
     if (!empty($serviceName)) {
-        $service = Service::where('name', $serviceName)->first();
+        $service = Service::where('nom', $serviceName)->first();
     } elseif (!empty($newServiceName)) {
         $service = new Service;
-        $service->name = $newServiceName;
+        $service->nom = $newServiceName;
         $service->save();
     } else {
-        return back()->withErrors(['name' => 'Le nom du service est requis.']);
+        return back()->withErrors(['nom' => 'Le nom du service est requis.']);
     }
 
+
     $provider = new Professional;
-    $provider->name = $validatedData['provider_name'];
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $filename);
+        $provider->image = $filename;
+    }
+    $provider->nom = $validatedData['provider_nom'];
     $provider->age = $validatedData['provider_age'];
     $provider->available_time = $validatedData['provider_time'];
+    $provider->telephone = $validatedData['provider_telephone'];
+    $provider->email = $validatedData['provider_email'];
     $provider->service_id = $service->id;
     $provider->save();
 
