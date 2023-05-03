@@ -35,59 +35,16 @@ class DonationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeArgent(Request $request)
-    {
-        // Créer une nouvelle donation
-        $donation = new Donation();
-        $donation->nom = $request->input('nom');
-        $donation->email = $request->input('email');
-        $donation->montant = $request->input('montant');
-        $donation->adresse = $request->input('adresse');
-        $donation->code_postal = $request->input('code_postal');
-        $donation->ville = $request->input('ville');
-        $donation->type = $request->input('type'); // Ajouter le type de donation
-        $donation->save();
-
-        // Créer une charge avec la librairie Stripe
-        Stripe::setApiKey(env('STRIPE_SECRET'));
-        if (empty($stripeToken)) {
-            return redirect()->route('paiement.create');
-        }
-        session_start();
-
-        try {
-            $charge = Charge::create([
-                'amount' => $donation->montant * 100, // Le montant doit être en cents
-                'currency' => 'usd',
-                'source' => $request->input('stripeToken'),
-                'description' => 'Donation',
-            ]);
-            // Stockez l'ID de la charge dans une variable de session
-            $_SESSION['charge_id'] = $charge->id;
-
-            // Enregistrer l'identifiant de la transaction dans la base de données
-            $donation->transaction_id = $charge->id;
-            $donation->save();
-
-            return redirect()->route('donations.index')->with('success', 'Thank you for your donation!');
-        } catch (\Stripe\Exception\CardException $e) {
-            return redirect('/donations.index')->withErrors(['error' => $e->getMessage()]);
-        }
-    }
-
-    // Dans le contrôleur DonationsController.php
+    
 
 
-public function createVetement()
-{
-    return view('vetements.create');
-}
 
 public function storeDon(Request $request)
 {
-    $donation = Donation::create($request->all());
+    $donation = new Donation();
     // Récupère les données du formulaire et les stocke dans l'objet Donation
     $donation->nom = $request->input('nom');
+    $donation->montant = $request->input('montant');
     $donation->adresse = $request->input('adresse');
     $donation->ville = $request->input('ville');
     $donation->code_postal = $request->input('code_postal');
@@ -98,14 +55,10 @@ public function storeDon(Request $request)
     $donation->livraison = $request->input('livraison');
     $livraison = $request->input('livraison');
     $donation->prix_livraison = ($request->input('livraison') === 'express') ? 20 : 10;
-
-
-    // Enregistre l'objet Donation dans la base de données
     $donation->save();
 
-    // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
-   // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
-if ($request->input('type') == 'argent') {
+  // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
+  if ($request->input('type') == 'argent') {
     return redirect()->route('paiement.create')->with('donation', $donation);
 } elseif ($request->input('methode') == 'virement') {
     return redirect()->route('paiement.create')->with('donation', $donation);
@@ -117,6 +70,43 @@ if ($request->input('type') == 'argent') {
     return redirect()->back()->with('error', 'La méthode de donation sélectionnée est invalide.');
 }
 
+    // Enregistre l'objet Donation dans la base de données
+    try {
+        Stripe::setApiKey('sk_test_51MlAg4D2dzVBVsLgV6HnejFU9d931M4kKYKTjLIj0WlplpPCVpi4epJbEru4uwqMfAFFpkPUYWMWor01c1XDte1N009ZrrNreL');
+    
+        $charge = Charge::create([
+            'amount' => $request->input('montant') * 100,
+            'currency' => 'EUR',
+            'description' => 'Donation',
+            'source' => $request->input('stripeToken'),
+        ]);
+    
+        $donation->charge_id = $charge->id;
+        $donation->transaction_id = $charge->balance_transaction;
+    
+        $donation->save();
+    
+    
+    } catch (\Stripe\Exception\CardException $e) {
+        $error = $e->getError()->message;
+    } catch (\Stripe\Exception\RateLimitException $e) {
+        $error = "Trop de requêtes vers Stripe. Veuillez réessayer plus tard.";
+    } catch (\Stripe\Exception\InvalidRequestException $e) {
+        $error = "Requête invalide vers Stripe. Veuillez réessayer plus tard.";
+    } catch (\Stripe\Exception\AuthenticationException $e) {
+        $error = "Clé API Stripe invalide. Veuillez contacter l'administrateur.";
+    } catch (\Stripe\Exception\ApiConnectionException $e) {
+        $error = "Connexion à l'API Stripe impossible. Veuillez réessayer plus tard.";
+    } catch (\Stripe\Exception\ApiErrorException $e) {
+        $error = "Erreur avec l'API Stripe. Veuillez réessayer plus tard.";
+    }
+    
+    return redirect()->back()->with('error', $error);
+    
+    // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
+    return redirect()->route('donations.index')->with('success', 'Donation effectuée avec succès.');
+
 }
+
 }
 

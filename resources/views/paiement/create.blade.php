@@ -1,6 +1,6 @@
 
 
-<form action="{{ route('donations.storeArgent') }}" method="post" id="payment-form">
+<form action="{{ route('donations.storeDon') }}" method="post" id="payment-form">
   @csrf
         
         <div class="form-group">

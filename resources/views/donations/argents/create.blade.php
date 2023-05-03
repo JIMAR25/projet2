@@ -6,7 +6,16 @@
 <div class="panel panel-default">
 <div class="panel-heading">{{ __('Faire un don d\'argent') }}</div>
             <div class="panel-body">
-                <form method="POST" action="{{ route('donations.storeArgent') }}">
+                <form method="POST" action="{{ route('paiement.storeDon') }}">
+                    @if ($errors->any())
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     @csrf
 
                     <div class="form-group row">
@@ -96,3 +105,4 @@
     </div>
 </div>
 @endsection
+
