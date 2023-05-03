@@ -1,7 +1,7 @@
 @include('layouts.header')
 <div class="about1">
     <div class="b1">
-        <img src="./pics/back10.jpg" alt="">
+        <img src="./pics/about5.jpg" alt="">
     </div>
     <div class="b2">
         <h4>ShareHope</h4>
