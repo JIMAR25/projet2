@@ -57,9 +57,11 @@
     </div>
 </section>
 
+
 <div class="footer">
   @include('layouts.footer')
 </div>
+
 
 
     <style>
@@ -163,7 +165,7 @@ footer {
   background-color:#696969;
   padding: 50px;
   color:white;
-  margin-top:700px;
+  margin-top:100px;
 }
 
 .box-container {
@@ -282,4 +284,5 @@ margin-left:50px;
     color:red;
     margin-left:120px;
 }
+
     </style>
