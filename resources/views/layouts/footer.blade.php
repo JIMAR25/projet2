@@ -66,6 +66,7 @@
   background-color:#696969;
   padding: 50px;
   color:white;
+  
 }
 
 .box-container {
