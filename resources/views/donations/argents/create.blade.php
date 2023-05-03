@@ -6,7 +6,7 @@
 <div class="panel panel-default">
 <div class="panel-heading">{{ __('Faire un don d\'argent') }}</div>
             <div class="panel-body">
-                <form method="POST" action="{{ route('donations.store') }}">
+                <form method="POST" action="{{ route('donations.storeArgent') }}">
                     @csrf
 
                     <div class="form-group row">
@@ -62,6 +62,17 @@
                         <div class="col-md-6">
                             <input id="date_de_naissance" type="date" class="form-control" name="date_de_naissance" required>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type de donation:</label>
+                        <select class="form-control" id="type" name="type">
+                            <option value="argent">Don d'argent</option>
+                            <option value="vetements">Don de vêtements</option>
+                            <option value="meubles">Don de meubles</option>
+                            <option value="fourniturescolaire">Don de fourniture scolaire</option>
+                            <option value="alimentation">Don d'alimentation</option>
+                            <option value="autre">Autres</option>                
+                        </select>
                     </div>
     
                     <div class="form-group row">

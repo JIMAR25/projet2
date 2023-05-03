@@ -54,14 +54,16 @@ Route::post('/services/{service}/donors', [ServiceController::class, 'addDonor']
 Route::get('/donations', [DonationController::class, 'index'])->name('donations.index');
 Route::get('/donations/argents/index', [ArgentController::class, 'index'])->name('donations.argents.index');
 Route::get('/argents', [DonationController::class, 'create'])->name('argents.create');
-Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+Route::post('/donations', [DonationController::class, 'storeArgent'])->name('donations.storeArgent');
+Route::post('/donations', [DonationController::class, 'storeDon'])->name('donations.storeDon');
 
 Route::get('/donations/argents/create', function () {
     return view('donations.argents.create');
 })->name('argent');
 
 Route::get('/paiement/create', [DonationController::class, 'create'])->name('paiement.create');
-Route::post('/donations', [DonationController::class, 'store'])->name('donations.store');
+Route::post('/paiement/create', [DonationController::class, 'storeArgent'])->name('donation.store');
+Route::post('/donations', [DonationController::class, 'storeArgent'])->name('donations.storeArgent');
 
 
 Route::get('/donations/alimentations/create', function () {
@@ -79,6 +81,34 @@ Route::get('/donations/scolaires/create', function () {
 Route::get('/donations/vetements/create', function () {
     return view('donations.vetements.create');
 })->name('vetements');
+// Affiche le formulaire pour faire un don de vêtements
+Route::get('/vetements/create', [DonationController::class, 'createVetement'])->name('vetements.create');
+// Enregistre un don de vêtements dans la base de données
+Route::post('/donations/vetements', [DonationController::class, 'storeDon'])->name('vetements.storeDon');
+Route::post('/donations/alimentations', [DonationController::class, 'storeDon'])->name('alimentations.storeDon');
+Route::post('/donations/meubles', [DonationController::class, 'storeDon'])->name('meubles.storeDon');
+Route::post('/donations/scolaires', [DonationController::class, 'storeDon'])->name('scolaires.storeDon');
+
+Route::post('/organisations', [DonationController::class, 'storeDon'])->name('paiement.create');
+Route::post('/lui-meme', [DonationController::class, 'storeDon'])->name('methodes.lui-meme');
+
+Route::get('/donations/argents', [DonationController::class, 'create'])->name('paiement.create');
+Route::post('/donations/argents', [DonationController::class, 'storeArgent'])->name('paiement.create');
+Route::post('/donations/vetements', [DonationController::class, 'storeDon'])->name('vetements.storeDon');
+Route::get('/donations/vetements', [DonationController::class, 'create'])->name('vetements.create');
+
+
+// Route pour la méthode de donation "Occupez vous de la livraison"
+Route::get('/methodes/lui-meme', function () {
+    return view('methodes.lui-meme');
+})->name('methodes.lui-meme');
+
+// Route pour la méthode de donation "Nous nous occupons!"
+Route::get('/methodes/organisation', function () {
+    return view('methodes.organisation');
+})->name('methodes.organisation');
+
+
 
 Route::get('/donations/autres/create', function () {
     return view('donations.autres.create');
