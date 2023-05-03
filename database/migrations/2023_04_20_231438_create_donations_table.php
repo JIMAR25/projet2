@@ -15,13 +15,14 @@ class CreateDonationsTable extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('email');
-            $table->decimal('montant', 8, 2);
+            $table->string('nom')->nullable();
+            $table->string('email')->nullable();
+            $table->decimal('montant', 8, 2)->nullable(); // Ajouter une valeur par défaut de 0
             $table->string('transaction_id')->nullable();
-            $table->string('adresse');
+            $table->string('adresse')->nullable();
+            $table->string('telephone')->nullable();
             $table->string('code_postal')->nullable();
-            $table->string('ville');
+            $table->string('ville')->nullable();
             $table->timestamps();
         });
     }

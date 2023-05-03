@@ -9,13 +9,20 @@ class Donation extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nom',
-        'email',
-        'montant',
-        'transaction_id',
-        'adresse',
-        'code_postal',
-        'ville',
-    ];
+   protected $fillable = [
+    'nom',
+    'email',
+    'montant',
+    'transaction_id',
+    'charge_id',
+    'adresse',
+    'code_postal',
+    'ville',
+    'telephone',
+    'type',
+    'methode',
+    'livraison',
+    'prix_livraison'
+];
+
 }
