@@ -32,9 +32,31 @@
     document.getElementById("mainImage").src = "./pics/" + imageName;
 }
 </script>
-<div class="villes">
+
+<section class="card-section">
     <h1>We are a global movement, with ShareHope from over 20 cities</h1>
-</div>
+    <div class="carte-roule">
+    <div class="card">
+        <img src="./pics/back11.jpg" alt="image1">
+        <h3>Titre 1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis eius quia ad corrupti vitae vel architecto distinctio, quam suscipit voluptatibus molestias. Aut sint veniam dignissimos itaque voluptates voluptas eaque delectus.</p>
+        <h5>date</h5>
+    </div>
+    <div class="card">
+        <img src="./pics/back12.jpg" alt="image2">
+        <h3>Titre 2</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta vero accusantium earum distinctio cupiditate qui officiis blanditiis, quidem, voluptate nulla corrupti molestiae asperiores repellat natus! Officia hic eligendi iste ipsa?</p>
+        <h5>date</h5>
+    </div>
+    <div class="card">
+        <img src="./pics/back13.jpg" alt="image3">
+        <h3>Titre 3</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus commodi asperiores quasi, quo nulla blanditiis! Aperiam esse obcaecati aspernatur voluptate nulla sint sit et quam, deleniti veniam tempore repudiandae porro!</p>
+        <h5>date</h5>
+    </div>
+    </div>
+</section>
+
 <div class="footer">
   @include('layouts.footer')
 </div>
@@ -234,6 +256,30 @@ margin-left:50px;
   font-size:4.5rem;
   font-weight:bold;
 }
+.carte-roule{
+    display:flex;
+    gap:100px;
+    margin-left:70px;
+    
 
-
+}
+.carte-roule .card img {
+  width:300px;
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius:60%;
+}
+.carte-roule .card p{
+    color:gray;
+}
+.card-section h1{
+    margin-bottom:80px;
+    margin-right:200px;
+    margin-left:80px;
+    font-size:2.5rem;
+} 
+.carte-roule .card h3{
+    color:red;
+    margin-left:120px;
+}
     </style>
