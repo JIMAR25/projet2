@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                     'nom' => 'John Doe',
                     'age' => 30,
                     'available_time' => '10:00-12:00',
-                    'image' => 'john_doe.jpg',
+                    'image' => 'educateur.webp',
                     'telephone'=> '0600000000',
                     'email' =>'hmido@gmail.com'
                 ],
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
                     'nom' => 'Jane Smith',
                     'age' => 35,
                     'available_time' => '14:00-16:00',
-                    'image' => 'john_doe.jpg',
+                    'image' => 'medecin.jpg',
                     'telephone'=> '0600000000',
                     'email' =>'hmido@gmail.com'
                 ],
@@ -46,16 +46,16 @@ class DatabaseSeeder extends Seeder
                     'nom' => 'Bob Johnson',
                     'age' => 40,
                     'available_time' => '18:00-20:00',
-                    'image' => 'john_doe.jpg',
+                    'image' => 'chauffeur-service.jpg',
                     'telephone'=> '0600000000',
                     'email' =>'hmido@gmail.com'
                 ],
             ]);
         }
-        // Temoignage::create([
-        //     'nom' => 'John Doe',
-        //     'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla semper enim, vel malesuada lectus pulvinar vitae.',
-        //     'image' => 'john_doe.jpg'
-        // ]);
+        Temoignage::create([
+            'nom' => 'John Doe',
+            'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla semper enim, vel malesuada lectus pulvinar vitae.',
+            'image' => 'john_doe.jpg'
+        ]);
     }
 }
