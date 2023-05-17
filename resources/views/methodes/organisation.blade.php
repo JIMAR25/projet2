@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Organisation de la livraison') }}</div>
 
                     <div class="card-body">
-                        <form action="{{ route('vetements.storeDon') }}" method="POST">
+                        <form action="{{ route('donations.storeLivraison') }}" method="POST">
                             @csrf
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -46,7 +46,7 @@
                             </div>
                             
 
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="adresse" class="col-md-4 col-form-label text-md-right">{{ __('Adresse de livraison') }}</label>
 
                                 <div class="col-md-6">
@@ -58,7 +58,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group row">
                                 <label for="date_livraison" class="col-md-4 col-form-label text-md-right">{{ __('Date de livraison souhaitée') }}</label>

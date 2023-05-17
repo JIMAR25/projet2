@@ -64,6 +64,8 @@ Route::get('/donations/argents/create', function () {
 Route::get('/paiement/create', [DonationController::class, 'create'])->name('paiement.create');
 Route::post('/paiement',[DonationController::class,'storePayment'])->name('paiement.storePayment');
 
+Route::post('/organisations',[DonationController::class,'storeLivraison'])->name('donations.storeLivraison');
+
 Route::post('/donations/paiement', [DonationController::class, 'storeDon'])->name('paiement.storeDon');
 
 
