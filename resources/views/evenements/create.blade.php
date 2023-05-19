@@ -1,27 +1,48 @@
+<!-- resources/views/evenements/create.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
-        <h1>Les cas d'urgences</h1>
-        <div class="row">
-            @foreach($emergencies as $emergency)
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img src="{{ $emergency->image }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $emergency->title }}</h5>
-                            <p class="card-text">{{ $emergency->description }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">En savoir plus</a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary">Aider</a>
-                                </div>
-                                <small class="text-muted">{{ $emergency->created_at->diffForHumans() }}</small>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Ajouter un Événement</div>
+
+                    <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                        </div>
+                        @endif
+
+                        <form action="{{ route('evenements.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="title">Titre</label>
+                                <input type="text" name="title" id="title" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="content">Contenu</label>
+                                <textarea name="content" id="content" class="form-control" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photos">Image</label>
+                                <input type="file" name="photos" id="photos" class="form-control-file" multiple>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </form>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
 @endsection

@@ -7,6 +7,7 @@ use App\Http\Controllers\TemoignageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ArgentController;
+use App\Http\Controllers\EvenementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -125,7 +126,9 @@ Route::get('/donations/autres/create', function () {
 
 
 
-
+Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
+Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
+Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
 
 
 
