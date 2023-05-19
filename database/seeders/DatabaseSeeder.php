@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Service;
 use App\Models\Temoignage;
 use App\Models\Professional;
+// use App\Models\Urgence;
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,5 +58,25 @@ class DatabaseSeeder extends Seeder
             'message' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla semper enim, vel malesuada lectus pulvinar vitae.',
             'image' => 'john_doe.jpg'
         ]);
+        // $urgences = [
+        //     [
+        //         'titre' => 'Urgence médicale',
+        //         'description' => 'Cette urgence concerne les frais médicaux d\'un enfant gravement malade qui nécessite une intervention chirurgicale d\'urgence.',
+        //         'montant_demande' => 5000,
+        //         'montant_actuel' => 0,
+        //         'date_limite' => '2023-06-30',
+        //     ],
+        //     [
+        //         'titre' => 'Urgence alimentaire',
+        //         'description' => 'Cette urgence concerne l\'aide alimentaire d\'urgence pour une communauté touchée par une catastrophe naturelle.',
+        //         'montant_demande' => 10000,
+        //         'montant_actuel' => 5000,
+        //         'date_limite' => '2023-05-31',
+        //     ],
+        // ];
+
+        // foreach ($urgences as $urgence) {
+        //     Urgence::create($urgence);
+        // }
     }
 }
