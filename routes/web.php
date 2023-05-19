@@ -8,6 +8,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ArgentController;
 use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\UrgenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,19 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services.ind
 Route::get('/services/create', [ServiceController::class, 'create'])->name('services.create');
 Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
 Route::post('/services/{service}/donors', [ServiceController::class, 'addDonor'])->name('services.addDonor');
+
+
+// Route::get('/urgences', [UrgenceController::class, 'index'])->name('urgence.index');
+// Route::get('/urgences/create', [UrgenceController::class, 'create'])->name('urgence.create');
+// Route::post('/urgences', [UrgenceController::class, 'store'])->name('urgence.store');
+// Route::get('/urgences/{urgence}/donate', [UrgenceController::class, 'donate'])->name('urgence.donate');
+// Route::post('/urgences/{urgence}/charge', [UrgenceController::class,'charge'])->name('urgence.charge');
+
+// Route::get('/urgences/{urgence}', [UrgenceController::class, 'show'])->name('urgences.show');
+// Route::get('/urgences/{urgence}/edit', [UrgenceController::class, 'edit'])->name('urgences.edit');
+// Route::put('/urgences/{urgence}', [UrgenceController::class, 'update'])->name('urgences.update');
+// Route::delete('/urgences/{urgence}', [UrgenceController::class, 'destroy'])->name('urgences.destroy');
+
 
 
 Route::get('/donations', [DonationController::class, 'index'])->name('donations.index');
