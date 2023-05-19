@@ -23,6 +23,8 @@ class CreateDonationsTable extends Migration
             $table->string('telephone')->nullable();
             $table->string('code_postal')->nullable();
             $table->string('ville')->nullable();
+    $table->date('date_livraison')->nullable();
+   
             $table->timestamps();
         });
     }

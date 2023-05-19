@@ -35,78 +35,89 @@ class DonationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
-
-
-
-public function storeDon(Request $request)
-{
-    $donation = new Donation();
-    // Récupère les données du formulaire et les stocke dans l'objet Donation
-    $donation->nom = $request->input('nom');
-    $donation->montant = $request->input('montant');
-    $donation->adresse = $request->input('adresse');
-    $donation->ville = $request->input('ville');
-    $donation->code_postal = $request->input('code_postal');
-    $donation->email = $request->input('email');
-    $donation->telephone = $request->input('telephone');
-    $donation->type = $request->input('type'); // Ajouter le type de donation
-    $donation->methode = $request->input('methode');
-    $donation->livraison = $request->input('livraison');
-    $livraison = $request->input('livraison');
-    $donation->prix_livraison = ($request->input('livraison') === 'express') ? 20 : 10;
-    $donation->save();
-
-  // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
-  if ($request->input('type') == 'argent') {
-    return redirect()->route('paiement.create')->with('donation', $donation);
-} elseif ($request->input('methode') == 'virement') {
-    return redirect()->route('paiement.create')->with('donation', $donation);
-} elseif ($request->input('methode') == 'lui-meme') {
-    return view('methodes.lui-meme')->with('donation', $donation);
-} elseif ($request->input('methode') == 'organisation') {
-    return view('methodes.organisation')->with('donation', $donation);
-} else {
-    return redirect()->back()->with('error', 'La méthode de donation sélectionnée est invalide.');
-}
-
-    // Enregistre l'objet Donation dans la base de données
-    try {
-        Stripe::setApiKey('sk_test_51MlAg4D2dzVBVsLgV6HnejFU9d931M4kKYKTjLIj0WlplpPCVpi4epJbEru4uwqMfAFFpkPUYWMWor01c1XDte1N009ZrrNreL');
-    
-        $charge = Charge::create([
-            'amount' => $request->input('montant') * 100,
-            'currency' => 'EUR',
-            'description' => 'Donation',
-            'source' => $request->input('stripeToken'),
-        ]);
-    
-        $donation->charge_id = $charge->id;
-        $donation->transaction_id = $charge->balance_transaction;
+    public function storeDon(Request $request)
+    {
+        $donation = new Donation();
+        // Récupère les données du formulaire et les stocke dans l'objet Donation
+        $donation->nom = $request->input('nom');
+        $donation->montant = $request->input('montant');
+        $donation->adresse = $request->input('adresse');
+        $donation->ville = $request->input('ville');
+        $donation->code_postal = $request->input('code_postal');
+        $donation->email = $request->input('email');
+        $donation->telephone = $request->input('telephone');
+        $donation->type = $request->input('type');
+        $donation->methode = $request->input('methode');
+        if ($request->input('methode') == 'lui-meme') {
+            $donation->prix_livraison = 0;
+        } elseif ($request->input('methode') == 'organisation') {
+            $donation->prix_livraison = ($request->input('livraison') === 'express') ? 10 : 5;
+        } 
     
         $donation->save();
+        // Stocke l'objet Donation dans la session
+        $request->session()->put('donation', $donation);
     
+        // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
+        if ($request->input('type') == 'argent') {
+            return redirect()->route('paiement.create');
+        } elseif ($request->input('methode') == 'virement') {
+            return redirect()->route('paiement.create');
+        } elseif ($request->input('methode') == 'lui-meme') {
+            return view('methodes.lui-meme')->with('donation', $donation);
+        } elseif ($request->input('methode') == 'organisation') {
+            return view('methodes.organisation')->with('donation', $donation);
+        } else {
+            return redirect()->back()->with('error', 'La méthode de donation sélectionnée est invalide.');
+        }
     
-    } catch (\Stripe\Exception\CardException $e) {
-        $error = $e->getError()->message;
-    } catch (\Stripe\Exception\RateLimitException $e) {
-        $error = "Trop de requêtes vers Stripe. Veuillez réessayer plus tard.";
-    } catch (\Stripe\Exception\InvalidRequestException $e) {
-        $error = "Requête invalide vers Stripe. Veuillez réessayer plus tard.";
-    } catch (\Stripe\Exception\AuthenticationException $e) {
-        $error = "Clé API Stripe invalide. Veuillez contacter l'administrateur.";
-    } catch (\Stripe\Exception\ApiConnectionException $e) {
-        $error = "Connexion à l'API Stripe impossible. Veuillez réessayer plus tard.";
-    } catch (\Stripe\Exception\ApiErrorException $e) {
-        $error = "Erreur avec l'API Stripe. Veuillez réessayer plus tard.";
+        // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
+        return redirect()->route('donations.index')->with('success', 'Donation effectuée avec succès.');
     }
     
-    return redirect()->back()->with('error', $error);
+    public function storeLivraison(Request $request)
+    {
+        $donation = $request->session()->get('donation');
     
-    // Redirige l'utilisateur vers la page appropriée en fonction de la méthode de donation sélectionnée
-    return redirect()->route('donations.index')->with('success', 'Donation effectuée avec succès.');
+        // Vérifiez si la session de donation existe et si les informations de livraison sont présentes
+        if ($donation) {
+            $donation->date_livraison = $request->input('date_livraison');
+    
+            $donation->save();
+    
+            // Redirigez l'utilisateur vers la page de paiement
+            return redirect()->route('paiement.create');
+        } else {
+            // Gérez le cas où les informations de donation sont manquantes dans la session
+            return redirect()->back()->with('error', 'Les informations de donation sont manquantes.');
+        }
+    }
+    
+    
 
+public function storePayment(Request $request)
+{
+    $donation = $request->session()->get('donation');
+
+    // Vérifiez si la session de donation existe et si les informations de paiement sont présentes
+    if ($donation) {
+        // Génère les ID de transaction et de charge automatiquement
+        $transactionId = uniqid('transaction_');
+        $chargeId = uniqid('charge_');
+
+        $donation->transaction_id = $transactionId;
+        $donation->charge_id = $chargeId;
+        
+        $donation->save();
+        
+        // Redirigez l'utilisateur vers la page de succès ou une autre page appropriée
+        return redirect()->route('donations.index')->with('success', 'Donation effectuée avec succès.');
+    } else {
+        // Gérez le cas où les informations de donation sont manquantes dans la session
+        return redirect()->back()->with('error', 'Les informations de donation sont manquantes.');
+    }
 }
+
 
 }
 
