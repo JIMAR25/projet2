@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Service;
+use App\Models\User;
 use App\Models\Temoignage;
 use App\Models\Professional;
 // use App\Models\Urgence;
@@ -78,5 +79,12 @@ class DatabaseSeeder extends Seeder
         // foreach ($urgences as $urgence) {
         //     Urgence::create($urgence);
         // }
+        $user = new User();
+        $user->nom = "Manal";
+        $user->email = "manal@gmail.com";
+        $user->email_verified_at = now();
+        $user->password = bcrypt('password');
+        $user->role = 'admin';
+        $user->save();
     }
 }

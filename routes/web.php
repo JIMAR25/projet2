@@ -146,7 +146,11 @@ Route::post('/evenements', [EvenementController::class, 'store'])->name('eveneme
 
 
 
+Route::middleware(['auth','admin'])->group(function () {
+});
 
+Route::middleware(['auth','client'])->group(function () {
+});
 
 
 require __DIR__.'/auth.php';
