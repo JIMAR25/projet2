@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\Temoignage;
+use App\Models\Evenement;
 use App\Models\Professional;
 // use App\Models\Urgence;
 
@@ -93,5 +94,17 @@ class DatabaseSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = bcrypt('password');
         $user->save();
+
+        Evenement::create([
+            'title' => 'Événement 1',
+            'content' => 'Contenu de l\'événement 1',
+            'photos' => 'WhatsApp-Image-2021-05-10-at-10.21.26.jpeg',
+        ]);
+
+        Evenement::create([
+            'title' => 'Événement 2',
+            'content' => 'Contenu de l\'événement 2',
+            'photos' => 'thinkstockphotos-540095978.jpeg',
+        ]);
     }
 }

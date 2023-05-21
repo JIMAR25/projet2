@@ -17,5 +17,11 @@ class Evenement extends Model
     {
         return $this->belongsToMany(User::class, 'event_likes', 'evenement_id', 'user_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     
 }

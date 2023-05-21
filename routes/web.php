@@ -144,6 +144,9 @@ Route::get('/evenements', [EvenementController::class, 'index'])->name('evenemen
 Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
 Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
 Route::post('evenements/like/{id}', [EvenementController::class, 'like'])->name('like');
+Route::post('evenements/comment/{id}', [EvenementController::class, 'comment'])->name('comment');
+Route::get('evenements/share/{id}', [EvenementController::class, 'share'])->name('evenements.share');
+
 
 
 
