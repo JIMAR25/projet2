@@ -143,6 +143,10 @@ Route::get('/donations/autres/create', function () {
 Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
 Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
 Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
+Route::post('evenements/like/{id}', [EvenementController::class, 'like'])->name('like');
+
+
+
 
 
 

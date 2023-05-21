@@ -13,5 +13,9 @@ class Evenement extends Model
         'photos'
     ];
 
-   
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'event_likes', 'evenement_id', 'user_id');
+    }
+    
 }

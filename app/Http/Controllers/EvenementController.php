@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Evenement;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+
 
 class EvenementController extends Controller
 {
@@ -42,6 +46,18 @@ class EvenementController extends Controller
     
         return redirect()->route('evenements.index')->with('success', 'Le poste a été ajouté avec succès.');
     }
+
+    public function like($id)
+{
+    $evenement = Evenement::findOrFail($id);
+    
+    $user = Auth::user();
+    if (!$evenement->likes->contains($user)) {
+        $evenement->likes()->attach($user);
+    }
+    
+    return redirect()->back()->with('success', 'Événement aimé avec succès.');
+}
     
 
 }
