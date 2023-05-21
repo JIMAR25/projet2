@@ -83,6 +83,18 @@ class DonationController extends Controller
         if ($donation) {
             $donation->date_livraison = $request->input('date_livraison');
     
+            // Ajoute le terme "express" dans la base de données lorsque la méthode de livraison est "express"
+            if ($request->input('livraison') === 'express') {
+                $donation->livraison = 'express';
+                $donation->prix_livraison = 10;
+
+            }
+            if ($request->input('livraison') === 'normal') {
+                $donation->livraison = 'normal';
+                $donation->prix_livraison = 5;
+
+            }
+    
             $donation->save();
     
             // Redirigez l'utilisateur vers la page de paiement

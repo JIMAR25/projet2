@@ -65,6 +65,12 @@
                             <input id="ville" type="text" class="form-control" name="ville" required>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="telephone" class="col-md-4 col-form-label text-md-right">Téléphone:</label>
+                        <div class="col-md-6">
+                        <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                        </div>
+                    </div>
                     {{-- <div class="form-group row">
                         <label for="date_de_naissance" class="col-md-4 col-form-label text-md-right">{{ __('Date de naissance') }}</label>
     
