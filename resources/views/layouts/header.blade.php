@@ -35,7 +35,7 @@
               <a class="nav-link" href="{{route('temoignages.index')}}">{{__("Témoignages")}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/evenements">Evenements</a>
+              <a class="nav-link" href="{{route('evenements.index')}}">Evenements</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('about')}}">{{__("A propos de nous")}}</a>

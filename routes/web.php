@@ -7,6 +7,8 @@ use App\Http\Controllers\TemoignageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ArgentController;
+use App\Http\Controllers\EvenementController;
+use App\Http\Controllers\UrgenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +53,19 @@ Route::post('/services', [ServiceController::class, 'store'])->name('services.st
 Route::post('/services/{service}/donors', [ServiceController::class, 'addDonor'])->name('services.addDonor');
 
 
+// Route::get('/urgences', [UrgenceController::class, 'index'])->name('urgence.index');
+// Route::get('/urgences/create', [UrgenceController::class, 'create'])->name('urgence.create');
+// Route::post('/urgences', [UrgenceController::class, 'store'])->name('urgence.store');
+// Route::get('/urgences/{urgence}/donate', [UrgenceController::class, 'donate'])->name('urgence.donate');
+// Route::post('/urgences/{urgence}/charge', [UrgenceController::class,'charge'])->name('urgence.charge');
+
+// Route::get('/urgences/{urgence}', [UrgenceController::class, 'show'])->name('urgences.show');
+// Route::get('/urgences/{urgence}/edit', [UrgenceController::class, 'edit'])->name('urgences.edit');
+// Route::put('/urgences/{urgence}', [UrgenceController::class, 'update'])->name('urgences.update');
+// Route::delete('/urgences/{urgence}', [UrgenceController::class, 'destroy'])->name('urgences.destroy');
+
+
+
 Route::get('/donations', [DonationController::class, 'index'])->name('donations.index');
 Route::get('/donations/argents/index', [ArgentController::class, 'index'])->name('donations.argents.index');
 Route::get('/argents', [DonationController::class, 'create'])->name('argents.create');
@@ -62,8 +77,12 @@ Route::get('/donations/argents/create', function () {
 })->name('argent');
 
 Route::get('/paiement/create', [DonationController::class, 'create'])->name('paiement.create');
-Route::post('/paiement/create', [DonationController::class, 'storeArgent'])->name('donation.store');
-Route::post('/donations', [DonationController::class, 'storeArgent'])->name('donations.storeArgent');
+Route::post('/paiement',[DonationController::class,'storePayment'])->name('paiement.storePayment');
+
+Route::post('/organisations',[DonationController::class,'storeLivraison'])->name('donations.storeLivraison');
+
+Route::post('/donations/paiement', [DonationController::class, 'storeDon'])->name('paiement.storeDon');
+
 
 
 Route::get('/donations/alimentations/create', function () {
@@ -89,13 +108,18 @@ Route::post('/donations/alimentations', [DonationController::class, 'storeDon'])
 Route::post('/donations/meubles', [DonationController::class, 'storeDon'])->name('meubles.storeDon');
 Route::post('/donations/scolaires', [DonationController::class, 'storeDon'])->name('scolaires.storeDon');
 
-Route::post('/organisations', [DonationController::class, 'storeDon'])->name('paiement.create');
+// Route::post('/organisation', [DonationController::class, 'storeDon'])->name('paiement.create');
 Route::post('/lui-meme', [DonationController::class, 'storeDon'])->name('methodes.lui-meme');
 
 Route::get('/donations/argents', [DonationController::class, 'create'])->name('paiement.create');
-Route::post('/donations/argents', [DonationController::class, 'storeArgent'])->name('paiement.create');
+// Route::post('/donations/argents', [DonationController::class, 'storeArgent'])->name('paiement.create');
 Route::post('/donations/vetements', [DonationController::class, 'storeDon'])->name('vetements.storeDon');
 Route::get('/donations/vetements', [DonationController::class, 'create'])->name('vetements.create');
+Route::get('/donations/alimentations', [DonationController::class, 'create'])->name('alimentations.create');
+Route::get('/donations/meubles', [DonationController::class, 'create'])->name('meubles.create');
+Route::get('/donations/scolaires', [DonationController::class, 'create'])->name('scolaires.create');
+Route::get('/donations/argents', [DonationController::class, 'create'])->name('argents.create');
+
 
 
 // Route pour la méthode de donation "Occupez vous de la livraison"
@@ -104,7 +128,7 @@ Route::get('/methodes/lui-meme', function () {
 })->name('methodes.lui-meme');
 
 // Route pour la méthode de donation "Nous nous occupons!"
-Route::get('/methodes/organisation', function () {
+Route::post('/methodes/organisation', function () {
     return view('methodes.organisation');
 })->name('methodes.organisation');
 
@@ -116,11 +140,24 @@ Route::get('/donations/autres/create', function () {
 
 
 
+Route::get('/evenements', [EvenementController::class, 'index'])->name('evenements.index');
+Route::get('/evenements/create', [EvenementController::class, 'create'])->name('evenements.create');
+Route::post('/evenements', [EvenementController::class, 'store'])->name('evenements.store');
+Route::post('evenements/like/{id}', [EvenementController::class, 'like'])->name('like');
+Route::post('evenements/comment/{id}', [EvenementController::class, 'comment'])->name('comment');
+Route::get('evenements/share/{id}', [EvenementController::class, 'share'])->name('evenements.share');
 
 
 
 
 
+
+
+Route::middleware(['auth','admin'])->group(function () {
+});
+
+Route::middleware(['auth','client'])->group(function () {
+});
 
 
 require __DIR__.'/auth.php';
