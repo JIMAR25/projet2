@@ -53,6 +53,12 @@ Route::post('/services', [ServiceController::class, 'store'])->name('services.st
 Route::post('/services/{service}/donors', [ServiceController::class, 'addDonor'])->name('services.addDonor');
 
 
+Route::get('/urgences', [UrgenceController::class, 'index'])->name('urgences.index');
+Route::get('/urgences/{urgence}/donate', [UrgenceController::class, 'show'])->name('urgences.show');
+Route::post('/urgences/{urgence}/process-payment', [UrgenceController::class, 'processPayment'])->name('urgences.processPayment');
+Route::post('/urgences/{id}/pay', [UrgenceController::class, 'pay'])->name('urgences.pay');
+
+
 // Route::get('/urgences', [UrgenceController::class, 'index'])->name('urgence.index');
 // Route::get('/urgences/create', [UrgenceController::class, 'create'])->name('urgence.create');
 // Route::post('/urgences', [UrgenceController::class, 'store'])->name('urgence.store');
