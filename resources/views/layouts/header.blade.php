@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+{{-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <div class="logo">
             <span class="flaticon-solidarity"></span>
@@ -41,13 +41,63 @@
               <a class="nav-link" href="{{route('about')}}">{{__("A propos de nous")}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="donate" href="/donations">Donate</a>
+              <a class="nav-link" id="donate" href="{{route('donations.index')}}">Donate</a>
             </li>
           </ul>
         </div>
 </div>
 </div>
+</nav> --}}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <div class="logo">
+      <span class="flaticon-solidarity"></span>
+      <h1 class="navbar-brand">ShareHope</h1>
+    </div>
+    <div class="navbar" id="navbarNav">
+      <div class="row">
+        <ul class="navbar1">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/services">Services</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{route('evenements.index')}}">Evenements</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('about')}}">{{__("À propos de nous")}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="donations-link" href="#">Donations</a>
+            <ul id="donations-menu" class="submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="/urgences">Cas d'urgences</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('temoignages.index')}}">{{__("Témoignages")}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('evenements.index')}}">Événements</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="row2">
+          <select name="langue" id="langue">
+            <option value="fr">Fr</option>
+            <option value="en">Ang</option>
+            <option value="ar">Ar</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
+
 <ul class="navbar-nav fixed-bottom">
   <li class="nav-item">
     <a class="nav-link" href="{{route('contact')}}">{{__("Contact")}}</a>
@@ -58,6 +108,18 @@
 </ul>
 
   <style>
+
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .navbar1 li:hover > .submenu {
+    display: block;
+  }
 
 .flaticon-solidarity {
   background-image: url('pics/solidarite.png');
@@ -77,38 +139,22 @@
 /* Style pour la première ligne */
 .navbar1 {
   display: flex;
-  justify-content: space-around;
+  flex-wrap:wrap;
+  gap:120px;
   align-items: center;
-  margin-left:200px;
+  margin-left:250px;
   list-style:none;
+  margin-top:48px;
 
 }
 
-/* Style pour la deuxième ligne */
-.navbar2 {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-left:200px;
-  list-style:none;
 
-}
-.navbar2 li a{
-  text-decoration:none;
-  font-size:20px;
-  color:gray;
-}
 .navbar1 li a{
   text-decoration:none;
   font-size:20px;
   color:gray;
 }
-.separer{
-  width:80%;
-  margin-left:200px;
-  margin-top:-10px;
-  margin-bottom:25px;
-}
+
 .row{
   margin-top:-135px;
   padding:20px;
@@ -120,19 +166,22 @@
 .logo span{
   margin-top:18px;
 }
-.navbar2 li #donate {
-  background-color: red;
-  color: white;
-  border-radius: 5px;
-  padding: 10px 20px;
-}
+
 .row2 {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-left: 20px;
+  margin-top:-40px;
+  margin-bottom:10px;
 
 }
+.row2 select{
+  border:solid 1px red;
+  padding:5px 15px;
+ 
+}
+
 /* Style pour les boutons Contact et Login */
 .navbar-nav.fixed-bottom {
   display: flex;
@@ -170,5 +219,27 @@ ul {
   list-style-type: none;
 }
 
-  </style>
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.navbar1 li').hover(
+      function() {
+        $(this).children('.submenu').addClass('show');
+      },
+      function() {
+        $(this).children('.submenu').removeClass('show');
+      }
+    );
+  });
+</script>
+
+
+
+
+
+
+
+
   

@@ -1,5 +1,5 @@
+@include('layouts.header')
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <h1>Liste des urgences</h1>
@@ -26,6 +26,9 @@
             </div>
         @endforeach
     </div>
+<div class="footer">
+  @include('layouts.footer')
+</div>
 @endsection
 <style>
     .amount-bar {

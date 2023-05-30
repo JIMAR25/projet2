@@ -1,8 +1,8 @@
+@include('layouts.header')
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="#">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Liste des Événements</div>
@@ -76,4 +76,8 @@
             </div>
         </div>
     </div>
+<div class="footer">
+  @include('layouts.footer')
+</div>
 @endsection
+
