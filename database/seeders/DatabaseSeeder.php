@@ -10,6 +10,7 @@ use App\Models\Evenement;
 use App\Models\Professional;
 use App\Models\Urgence;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        
         $services = [
             'Educateur',
             'Médecin',
